@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="bootstrap-3.3.5/css/bootstrap.css">
+  <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="js/countUp.js"></script>
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/luck.js"></script>
+  <title>Luck</title>
+  <style>
+    body{background: url("img/bg.jpg") no-repeat;}
+    .title{text-align: center; color: #CEBE0C;font-size: 24px;}
+    .subtitle{text-align: center;color: #CEBE0C;font-size: 18px;padding-bottom: 15px;}
+    .jianju-nav{padding-bottom: 108px}
+    .nav{margin: 0 auto;width:744px;padding-top: 10px;}
+    .nav>li{width: 220px;text-align: center;border: 1px solid #fff;border-radius: 4px;}
+    .nav>li.jianju{margin-right: 40px;}
+    .nav>li.active{border: 1px solid #CEBE0C;ba}
+    .nav>li>a{color: #CEBE0C;font-weight: bolder;font-size: 40px;}
+    .nav>li.active>a{color: #000;background-color: #CEBE0C;}
+
+    .table{width: 88%;margin: 0 auto;font-size: 52px; color: #CEBE0C;}
+    .table>tbody>tr>td{text-align: center;height: 168px;vertical-align: middle;letter-spacing:6px;}
+    .btn-luck{width: 200px;font-size: 28px;color: #CEBE0C;background-color: #C80000;border: 1px solid #CEBE0C;font-weight: bolder;}
+    .btn-luck:hover{background-color: #fff;color: #CEBE0C;border: 1px solid #CEBE0C;}
+
+    .float-bottom{position: absolute;bottom: 10px;margin: 0 auto;clear: both;display: block;text-align: center;width: 100%;}
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class=" title"><h1>新婚庆典</h1></div>
+    <div class="jianju-nav">
+      <div class="col-md-12">
+        <ul class="nav nav-pills">
+          <li class="active jianju"><a href="#">三等奖</a></li>
+          <li class="jianju"><a href="#">二等奖</a></li>
+          <li><a href="#">一等奖</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section">
+      <div class=" subtitle"><h3>三等奖&nbsp;&nbsp;&nbsp;&nbsp;滤水壶&nbsp;&nbsp;&nbsp;&nbsp;30名</h3></div>
+      <div style="padding-top: 45px;">
+        <table class="table table-bordered table_st">
+          <tr>
+            <td id="show1">888888</td>
+            <td id="show2">888888</td>
+            <td id="show3">888888</td>
+          </tr>
+          <tr>
+            <td id="show4">888888</td>
+            <td id="show5">888888</td>
+            <td id="show6">888888</td>
+          </tr>
+        </table>
+      </div>
+      <div class="float-bottom">
+        <button type="button" class="btn btn-primary btn-lg btn-luck btn-1st">开始抽奖</button>
+        <button type="button" class="btn btn-primary btn-lg btn-luck btn-1st-stop" style="display: none;">停</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
