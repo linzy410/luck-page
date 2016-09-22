@@ -1,6 +1,5 @@
 $(function(){
   localStorage.setItem('ahm', ahm);
-  console.log(localStorage.getItem('ahm'));
   var timeArray = new Array();
   var indexStr = ",";
   $('.btn-1st').click(function(){
@@ -26,17 +25,17 @@ $(function(){
       prefix : '',
       suffix : ''
     };
-
-    var demo = new CountUp("show1", parseInt($('#show1').text()), 666666, 0, 5, options);
-    demo.start();
-
+    var array = localStorage.getItem('ahm').split(',');
+    indexStr = ",";
     $('.table_st>tbody>tr>td').each(function(i){
-      var i = $(this).data('index');
-      var array = localStorage.getItem('ahm').split(',');
+      console.log(array);
+      var i = getPreviewIndex();
+      console.log(i + "  |  " + array[i])
+      var demo = new CountUp($(this).attr('id'), parseInt($(this).text()), array[i], 0, 8, options);
+      demo.start();
       array.splice(i,1);
-      localStorage.setItem('ahm', array);
     });
-    console.log(localStorage.getItem('ahm'));
+    localStorage.setItem('ahm', array);
   });
   function preview(obj) {
     var i = getPreviewIndex();
@@ -44,7 +43,7 @@ $(function(){
     indexStr=indexStr.replace(oldIndex+',', '');
     obj.data('index', i);
     var array = localStorage.getItem('ahm').split(',');
-    obj.html(array[i]+'|'+i);
+    obj.html(array[i]);
   }
   function getPreviewIndex(){
     var array = localStorage.getItem('ahm').split(',');
