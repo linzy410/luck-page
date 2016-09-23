@@ -31,38 +31,80 @@
   </style>
 </head>
 <body>
-  <div class="container-fluid">
-    <div class=" title"><h1>新婚庆典</h1></div>
-    <div class="jianju-nav">
-      <div class="col-md-12">
-        <ul class="nav nav-pills">
-          <li class="active jianju"><a href="#">三等奖</a></li>
-          <li class="jianju"><a href="#">二等奖</a></li>
-          <li><a href="#">一等奖</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="section">
-      <div class=" subtitle"><h3>三等奖&nbsp;&nbsp;&nbsp;&nbsp;滤水壶&nbsp;&nbsp;&nbsp;&nbsp;30名</h3></div>
-      <div style="padding-top: 45px;">
-        <table class="table table-bordered table_st">
-          <tr>
-            <td id="show1">888888</td>
-            <td id="show2">888888</td>
-            <td id="show3">888888</td>
-          </tr>
-          <tr>
-            <td id="show4">888888</td>
-            <td id="show5">888888</td>
-            <td id="show6">888888</td>
-          </tr>
-        </table>
-      </div>
-      <div class="float-bottom">
-        <button type="button" class="btn btn-primary btn-lg btn-luck btn-1st">开始抽奖</button>
-        <button type="button" class="btn btn-primary btn-lg btn-luck btn-1st-stop" style="display: none;">停</button>
-      </div>
-    </div>
-  </div>
+	<div class="container-fluid">
+		<div class=" title">
+			<h1>新婚庆典</h1>
+		</div>
+		<div class="jianju-nav">
+			<div class="col-md-12">
+				<ul class="nav nav-pills">
+					<li class="active jianju" data-section="section_rd"><a href="#">三等奖</a></li>
+					<li class="jianju" data-section="section_nd"><a href="#">二等奖</a></li>
+					<li data-section="section_st"><a href="#">一等奖</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="section" id="section_rd">
+			<div class=" subtitle">
+				<h3>三等奖&nbsp;&nbsp;&nbsp;&nbsp;滤水壶&nbsp;&nbsp;&nbsp;&nbsp;30名</h3>
+			</div>
+			<div style="padding-top: 45px;">
+				<table class="table table-bordered table_rd">
+					<tr>
+						<td id="show1">888</td>
+						<td id="show2">888</td>
+						<td id="show3">888</td>
+					</tr>
+					<tr>
+						<td id="show4">888</td>
+						<td id="show5">888</td>
+						<td id="show6">888</td>
+					</tr>
+				</table>
+			</div>
+			<div class="float-bottom">
+				<button type="button" class="btn btn-primary btn-lg btn-luck btn-rd">开始抽奖</button>
+				<button type="button" class="btn btn-primary btn-lg btn-luck btn-rd-stop" style="display: none;">停</button>
+			</div>
+		</div>
+		<div class="section" id="section_nd" style="display: none;">
+			<div class=" subtitle">
+				<h3>二等奖&nbsp;&nbsp;&nbsp;&nbsp;被子&nbsp;&nbsp;&nbsp;&nbsp;8名</h3>
+			</div>
+			<div style="padding-top: 45px;">
+				<table class="table table-bordered table_rd">
+					<tr>
+						<td id="show7">888</td>
+						<td id="show8">888</td>
+					</tr>
+					<tr>
+						<td id="show9">888</td>
+						<td id="show10">888</td>
+					</tr>
+				</table>
+			</div>
+			<div class="float-bottom">
+				<button type="button" class="btn btn-primary btn-lg btn-luck btn-rd">开始抽奖</button>
+				<button type="button" class="btn btn-primary btn-lg btn-luck btn-rd-stop" style="display: none;">停</button>
+			</div>
+		</div>
+		<div class="section" id="section_st" style="display: none;">
+			<div class=" subtitle">
+				<h3>一等奖&nbsp;&nbsp;&nbsp;&nbsp;捷安特山地自行车&nbsp;&nbsp;&nbsp;&nbsp;2名</h3>
+			</div>
+			<div style="padding-top: 45px;">
+				<table class="table table-bordered table_rd">
+					<tr>
+						<td id="show11">888</td>
+						<td id="show12">888</td>
+					</tr>
+				</table>
+			</div>
+			<div class="float-bottom">
+				<button type="button" class="btn btn-primary btn-lg btn-luck btn-rd">开始抽奖</button>
+				<button type="button" class="btn btn-primary btn-lg btn-luck btn-rd-stop" style="display: none;">停</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
