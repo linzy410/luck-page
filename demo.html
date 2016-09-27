@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <title>日本地震灾区前后对比</title>
+    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <style>
+    	#after{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url(../images/24.jpg);
+    width: 940px;
+    height: 529px;
+    background-repeat: no-repeat;
+}
+#before{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-right: 3px solid #f00;
+    background-image: url(../images/23.jpg);
+    width: 433px;
+    height: 529px;
+    background-repeat: no-repeat;
+    max-width: 940px;
+}
+.beforeafter{
+    width: 940px;
+    height: 529px;
+}
+#after{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url(../images/24.jpg);
+    width: 940px;
+    height: 529px;
+    background-repeat: no-repeat;
+}
+#before{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-right: 3px solid #f00;
+    background-image: url(../images/23.jpg);
+    width: 433px;
+    height: 529px;
+    background-repeat: no-repeat;
+    max-width: 940px;
+}
+    </style>
+    <script>
+        function RollImage(evt){
+          var x=evt.pageX;
+          $("#before").css("width",x+"px");
+        }
+    </script>
+</head>
+<body>
+<div class="beforeafter" onmousemove="RollImage(event)">
+    <div id="after"></div>
+    <div id="before"> </div>
+</div>
+</body>
+</html>
