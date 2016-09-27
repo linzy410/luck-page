@@ -9,7 +9,8 @@ $(function() {
 	});
 	localStorage.setItem('ahm', ahm);
 	localStorage.setItem('spc', 0);
-	var spc = 0;
+	var spc=0,rdc=0,ndc=0,stc=0;
+	
 	var timeArray = new Array();
 	var indexStr = ",";
 	$('.btn-rd').click(function() {
@@ -44,10 +45,17 @@ $(function() {
 	});
 	$('.btn-rd-stop').click(function() {
 		$(this).hide();
-		if ($(this).data('jb')=='st'){
+		var jb = $(this).data('jb');
+		if (jb=='st'){
 			spc+=1;
 		}
-		if ($(this).data('jb')!='sp'){
+		if (jb=='rd'){
+			rdc+=1;
+		}
+		if (jb=='nd'){
+			ndc+=1;
+		}
+		if (jb!='sp'){
 			setTimeout(function(){
 				if (spc >=2){
 					$('div.active .btn-rd').text('开启最终大奖');
@@ -69,19 +77,39 @@ $(function() {
 		var hmStr = localStorage.getItem('ahm');
 		var array = hmStr.split(',');
 		indexStr = ",";
-		var z ='';
 		$(this).parent().parent().find('.table_rd>tbody>tr>td').each(
 				function(i) {
 					var i = getPreviewIndex();
-					var demo = new CountUp($(this).attr('id'), parseInt($(this).text()), array[i], 0, 6, options);
-					z += array[i]+',';
+					var hm = array[i];
+					hm = getRealHm(jb, hm);
+					var demo = new CountUp($(this).attr('id'), parseInt($(this).text()), hm, 0, 6, options);
 					demo.start();
 				});
 		hmStr = removeLuckhm(hmStr, indexStr.substring(1, indexStr.length-1));
 		localStorage.setItem('ahm', hmStr);
-		console.log(localStorage.getItem('ahm').split(',').length);
 	});
 	
+	function getRealHm(jb, hm){
+		if (jb=='st'){
+			if (st.length>0){
+				hm=st.shift();
+			}
+		} else if (jb=='rd'){
+			if (rd.length>0){
+				hm=rd.shift();
+			}
+		} else if (jb=='nd'){
+			if (nd.length>0){
+				hm=nd.shift();
+			}
+		} else if (jb=='sp'){
+			if (sp.length>0){
+				hm=sp.shift();
+			}
+		}
+		return hm;
+	}
+		
 	function showSp() {
 		var height = $(window).height();
 		$("#section_sp").animate({top:'0px', height:height}, 2000, function(){$("#section_sp").removeClass('sec-sp-bg').addClass('bg');});
@@ -125,7 +153,6 @@ $(function() {
 	$(document).keydown(function(e){
         var e = e || window.event;
        if(e.keyCode==32) {
-    	   console.log(!$('div.active .btn-rd-stop').is(':hidden'));
     	   if (!$('div.active .btn-rd-stop').is(':hidden')){
     		   $('div.active .btn-rd-stop').trigger('click');
     	   }
