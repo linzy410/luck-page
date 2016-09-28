@@ -8,30 +8,17 @@ $(function() {
 		setTimeout(function(){$('#'+t).fadeIn(1000);$('#'+t).addClass('active')}, 1000);
 	});
 	localStorage.setItem('ahm', ahm);
-	localStorage.setItem('spc', 0);
-	var spc=0,rdc=0,ndc=0,stc=0;
-	
 	var timeArray = new Array();
 	var indexStr = ",";
 	$('.btn-rd').click(function() {
-		if (spc<2){
-			$(this).parent().parent().find('.table_rd>tbody>tr>td').each(function(i) {
-				var o = $(this);
-				var ti = setInterval(function() {preview(o);}, 50);
-				timeArray[i] = ti;
-			});
-			$(this).toggle();
-			$(this).next().toggle();
-			$(this).blur();
-		} else{
-			$('.nav li,.section.active').fadeOut(1000);
-			$('.section').removeClass('active');
-			$('#section_sp').addClass('active');
-			setTimeout(function(){
-				$('.nav li:last').fadeIn(1000);
-				$('#section_sp').fadeIn(1000);
-			}, 1000);
-		}
+		$(this).parent().parent().find('.table_rd>tbody>tr>td').each(function(i) {
+			var o = $(this);
+			var ti = setInterval(function() {preview(o);}, 50);
+			timeArray[i] = ti;
+		});
+		$(this).toggle();
+		$(this).next().toggle();
+		$(this).blur();
 	});
 	$('.btn-sp').click(function(){
 		$(this).parent().parent().find('.table_rd>tbody>tr>td').each(function(i) {
@@ -45,24 +32,10 @@ $(function() {
 	});
 	$('.btn-rd-stop').click(function() {
 		$(this).hide();
+		setTimeout(function(){
+			$('div.active .btn-rd').fadeIn(1000);
+		}, 1000 * 10);
 		var jb = $(this).data('jb');
-		if (jb=='st'){
-			spc+=1;
-		}
-		if (jb=='rd'){
-			rdc+=1;
-		}
-		if (jb=='nd'){
-			ndc+=1;
-		}
-		if (jb!='sp'){
-			setTimeout(function(){
-				if (spc >=2){
-					$('div.active .btn-rd').text('开启最终大奖');
-				}
-				$('div.active .btn-rd').fadeIn(2000);
-				}, 1000 * 0.5);
-		}
 		$.each(timeArray, function(i, v) {
 			clearInterval(v);
 		})
@@ -82,11 +55,22 @@ $(function() {
 					var i = getPreviewIndex();
 					var hm = array[i];
 					hm = getRealHm(jb, hm);
-					var demo = new CountUp($(this).attr('id'), parseInt($(this).text()), hm, 0, 6, options);
+					var demo = new CountUp($(this).attr('id'), parseInt($(this).text()), hm, 0, 8, options);
 					demo.start();
 				});
 		hmStr = removeLuckhm(hmStr, indexStr.substring(1, indexStr.length-1));
 		localStorage.setItem('ahm', hmStr);
+	});
+	$('.spshow').dblclick(function(){
+		$('.nav li,.section.active').fadeOut(1000);
+		$('.section').removeClass('active');
+		$('#section_sp').addClass('active');
+		setTimeout(function(){
+			$('#show10').text('888');
+			$('.btn-sp').show();
+			$('.nav li:last').fadeIn(1000);
+			$('#section_sp').fadeIn(1000);
+		}, 1000);
 	});
 	
 	function getRealHm(jb, hm){
