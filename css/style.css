@@ -1,0 +1,122 @@
+.bg {
+	background: url("../img/bg3.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.title {
+	text-align: center;
+	color: #CEBE0C;
+	font-size: 24px;
+}
+
+.subtitle {
+	text-align: center;
+	color: #CEBE0C;
+	font-size: 18px;
+	padding-bottom: 15px;
+}
+
+.jianju-nav {
+	padding-bottom: 108px
+}
+
+.nav {
+	margin: 0 auto;
+	width: 744px;
+	padding-top: 10px;
+}
+
+.nav>li {
+	width: 220px;
+	text-align: center;
+	border: 1px solid #fff;
+	border-radius: 4px;
+}
+
+.nav>li.jianju {
+	margin-right: 40px;
+}
+
+.nav>li.active {
+	border: 1px solid #CEBE0C;
+	ba
+}
+
+.nav>li>a {
+	color: #CEBE0C;
+	font-weight: bolder;
+	font-size: 40px;
+}
+
+.nav>li.active>a {
+	color: #000;
+	background-color: #CEBE0C;
+}
+
+.nav>li.sp {
+	margin-left: 262px;
+	display: block;
+}
+
+.table {
+	width: 88%;
+	margin: 0 auto;
+	font-size: 52px;
+	color: #CEBE0C;
+}
+
+.table>tbody>tr>td {
+	text-align: center;
+	height: 168px;
+	vertical-align: middle;
+	letter-spacing: 6px;
+	width: 33.33%;
+}
+
+.btn-luck {
+	width: 200px;
+	font-size: 28px;
+	color: #CEBE0C;
+	background-color: #C80000;
+	border: 1px solid #CEBE0C;
+	font-weight: bolder;
+}
+
+.btn-luck:hover {
+	background-color: #fff;
+	color: #CEBE0C;
+	border: 1px solid #CEBE0C;
+}
+
+.float-bottom {
+	position: absolute;
+	bottom: 10px;
+	margin: 0 auto;
+	clear: both;
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+
+#canvas-container {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+}
+
+canvas {
+	cursor: crosshair;
+	display: block;
+	position: relative;
+	z-index: 3;
+}
+
+canvas:active {
+	cursor: crosshair;
+}

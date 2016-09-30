@@ -7,6 +7,7 @@ $(function() {
 		var t = $(this).data('section');
 		setTimeout(function(){$('#'+t).fadeIn(1000);$('#'+t).addClass('active')}, 1000);
 	});
+	var fworks = new Fireworks();
 	localStorage.setItem('ahm', ahm);
 	var timeArray = new Array();
 	var indexStr = ",";
@@ -34,7 +35,7 @@ $(function() {
 		$(this).hide();
 		setTimeout(function(){
 			$('div.active .btn-rd').fadeIn(1000);
-		}, 1000 * 10);
+		}, 1000 * 60);
 		var jb = $(this).data('jb');
 		$.each(timeArray, function(i, v) {
 			clearInterval(v);
@@ -60,7 +61,20 @@ $(function() {
 				});
 		hmStr = removeLuckhm(hmStr, indexStr.substring(1, indexStr.length-1));
 		localStorage.setItem('ahm', hmStr);
+		if (jb=='sp'){
+			setTimeout(function(){
+				$('#canvas-container').show();
+				for(var i=0;i<3;i++){
+					setTimeout(function(){fworks.showRandom()}, 2000*i);
+				}
+			}, 8000);
+		} else {
+			setTimeout(function(){$('#canvas-container').show();fworks.showRandom(88);}, 8000);
+		}
+		setTimeout(function(){$('#canvas-container').hide()}, 15000);
 	});
+	
+	
 	$('.spshow').dblclick(function(){
 		$('.nav li,.section.active').fadeOut(1000);
 		$('.section').removeClass('active');
