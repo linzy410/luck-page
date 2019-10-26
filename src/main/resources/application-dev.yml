@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://qnvip-ali.mysql.rds.aliyuncs.com:3999/luck?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&serverTimezone=UTC
+    username: luck
+    password: FcLxy&$a516sBKay

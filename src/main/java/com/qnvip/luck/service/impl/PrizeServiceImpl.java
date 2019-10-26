@@ -1,0 +1,52 @@
+package com.qnvip.luck.service.impl;
+
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+
+import com.qnvip.luck.dao.PrizeDao;
+import com.qnvip.luck.entity.Prize;
+import com.qnvip.luck.service.PrizeService;
+
+/**
+ * @author Eric Lin
+ *
+ * 2019-10-26
+ */
+@Service
+public class PrizeServiceImpl implements PrizeService {
+
+    @Resource
+    private PrizeDao prizeDao;
+
+    @Override
+    public List<Prize> select(Prize condition, String targetColumns, String otherCondition) {
+        return prizeDao.select(condition, targetColumns, otherCondition);
+    }
+
+    @Override
+    public Prize selectOne(Prize condition, String targetColumns, String otherCondition) {
+        if (StringUtils.isEmpty(otherCondition)) {
+            otherCondition = "limit 1";
+        } else {
+            otherCondition += " limit 1";
+        }
+        List<Prize> list = prizeDao.select(condition, targetColumns, otherCondition);
+        if (list == null || list.size() == 0) {
+            return null;
+        }
+        return list.get(0);
+    }
+
+    @Override
+    public Prize selectById(Integer id) {
+        if (id == null || id == 0) {
+            return null;
+        }
+        Prize condition = new Prize();
+        condition.setId(id);
+        return this.selectOne(condition, null, null);
+    }
+}
