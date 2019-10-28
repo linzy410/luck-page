@@ -15,6 +15,6 @@ public interface PrizeService {
 
     Prize selectOne(Prize condition, String targetColumns, String otherCondition);
 
-    Prize selectById(Integer id);
+    List<Prize> selectByActivityId(Integer activityid);
 
 }

@@ -17,6 +17,8 @@ public class WinningList {
      */
     private Integer id;
 
+    private Integer activityId;
+
     /**
      * 
      */

@@ -41,12 +41,12 @@ public class LotteryNumberServiceImpl implements LotteryNumberService {
     }
 
     @Override
-    public LotteryNumber selectById(Integer id) {
-        if (id == null || id == 0) {
+    public List<LotteryNumber> selectByActivityId(Integer activityId) {
+        if (activityId == null || activityId == 0) {
             return null;
         }
         LotteryNumber condition = new LotteryNumber();
-        condition.setId(id);
-        return this.selectOne(condition, null, null);
+        condition.setActivityId(activityId);
+        return this.select(condition, null, null);
     }
 }

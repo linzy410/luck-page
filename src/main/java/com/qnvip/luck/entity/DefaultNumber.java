@@ -7,15 +7,17 @@ import lombok.Data;
  * @author Eric Lin
  * 2019-10-26
  */
-@Database(tableName = "lc_buildin_number")
+@Database(tableName = "lc_default_number")
 @Data
-public class BuildinNumber {
+public class DefaultNumber {
 
 
     /**
      * 
      */
     private Integer id;
+
+    private Integer activityId;
 
     /**
      * 号码

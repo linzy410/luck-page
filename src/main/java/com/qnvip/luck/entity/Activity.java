@@ -5,11 +5,11 @@ import lombok.Data;
 
 /**
  * @author Eric Lin
- * 2019-10-26
+ * 2019-10-28
  */
-@Database(tableName = "lc_prize")
+@Database(tableName = "lc_activity")
 @Data
-public class Prize {
+public class Activity {
 
 
     /**
@@ -17,19 +17,10 @@ public class Prize {
      */
     private Integer id;
 
-    private Integer activityId;
-
     /**
-     * 名称
+     * 
      */
-    private String name;
-
-    /**
-     * 数量
-     */
-    private Integer amount;
-
-    private Integer listOrder;
+    private String title;
 
     /**
      * 

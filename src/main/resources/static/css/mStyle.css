@@ -1,0 +1,8 @@
+.menu{cursor: pointer;}
+.container{width: 100% !important;}
+
+/* chrome 浏览器滚动条 */
+::-webkit-scrollbar {width: 10px !important;height: 10px !important;-webkit-appearance: none;}
+::-webkit-scrollbar-track {border-radius: 0px;background: rgba(0, 0, 0, 0.1);}
+::-webkit-scrollbar-thumb {height: 5px;border: 1px solid transparent;border-radius: 5px;background: rgba(0, 0, 0, 0.2);background-clip: padding-box;}
+::-webkit-scrollbar-thumb:hover {border-radius: 5px;background: rgba(0, 0, 0, 0.4);}

@@ -17,6 +17,8 @@ public class LotteryNumber {
      */
     private Integer id;
 
+    private Integer activityId;
+
     /**
      * 号码
      */

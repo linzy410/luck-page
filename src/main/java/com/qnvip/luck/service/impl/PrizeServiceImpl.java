@@ -41,12 +41,12 @@ public class PrizeServiceImpl implements PrizeService {
     }
 
     @Override
-    public Prize selectById(Integer id) {
-        if (id == null || id == 0) {
+    public List<Prize> selectByActivityId(Integer activityid) {
+        if (activityid == null || activityid == 0) {
             return null;
         }
         Prize condition = new Prize();
-        condition.setId(id);
-        return this.selectOne(condition, null, null);
+        condition.setActivityId(activityid);
+        return this.select(condition, null, null);
     }
 }

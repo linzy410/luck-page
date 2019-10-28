@@ -15,6 +15,6 @@ public interface LotteryNumberService {
 
     LotteryNumber selectOne(LotteryNumber condition, String targetColumns, String otherCondition);
 
-    LotteryNumber selectById(Integer id);
+    List<LotteryNumber> selectByActivityId(Integer activityId);
 
 }
