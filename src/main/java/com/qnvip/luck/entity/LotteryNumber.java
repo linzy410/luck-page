@@ -1,7 +1,9 @@
 package com.qnvip.luck.entity;
 
+import com.qnvip.commons.enums.StatusEnum;
 import com.qnvip.commons.mybatis.annotation.Database;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Eric Lin
@@ -9,6 +11,7 @@ import lombok.Data;
  */
 @Database(tableName = "lc_lottery_number")
 @Data
+@NoArgsConstructor
 public class LotteryNumber {
 
 
@@ -29,8 +32,9 @@ public class LotteryNumber {
      */
     private Integer status;
 
-    /**
-     * 
-     */
-    private String createTime;
+
+    public LotteryNumber(String number) {
+        this.number = number;
+        this.status = StatusEnum.NOMAL.getValue();
+    }
 }

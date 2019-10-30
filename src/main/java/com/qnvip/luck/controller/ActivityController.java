@@ -42,7 +42,7 @@ public class ActivityController {
 
     @PostMapping("")
     public String save(ActivityBO activityBO) {
-
+        activityService.save(activityBO);
         return "redirect:/manage/activty/";
     }
 }

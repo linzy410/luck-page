@@ -31,8 +31,4 @@ public class Prize {
 
     private Integer listOrder;
 
-    /**
-     * 
-     */
-    private String createTime;
 }

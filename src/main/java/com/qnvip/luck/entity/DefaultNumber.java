@@ -33,9 +33,4 @@ public class DefaultNumber {
      * 
      */
     private Integer prizeId;
-
-    /**
-     * 
-     */
-    private String createTime;
 }
