@@ -17,4 +17,6 @@ public interface LotteryNumberService {
 
     List<LotteryNumber> selectByActivityId(Integer activityId);
 
+    List<LotteryNumber> selectUnwingingByActivityId(Integer activityId);
+
 }

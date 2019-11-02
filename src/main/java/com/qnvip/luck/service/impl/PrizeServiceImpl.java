@@ -1,5 +1,6 @@
 package com.qnvip.luck.service.impl;
 
+import com.qnvip.luck.bo.PrizeBO;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -48,5 +49,10 @@ public class PrizeServiceImpl implements PrizeService {
         Prize condition = new Prize();
         condition.setActivityId(activityid);
         return this.select(condition, null, null);
+    }
+
+    @Override
+    public List<PrizeBO> selectPrizeBOByActivityId(Integer activityid) {
+        return prizeDao.selectPrizeBO(activityid);
     }
 }

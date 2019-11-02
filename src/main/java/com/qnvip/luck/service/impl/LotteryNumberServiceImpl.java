@@ -1,5 +1,6 @@
 package com.qnvip.luck.service.impl;
 
+import com.qnvip.commons.enums.StatusEnum;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -9,6 +10,7 @@ import javax.annotation.Resource;
 import com.qnvip.luck.dao.LotteryNumberDao;
 import com.qnvip.luck.entity.LotteryNumber;
 import com.qnvip.luck.service.LotteryNumberService;
+import sun.security.x509.OCSPNoCheckExtension;
 
 /**
  * @author Eric Lin
@@ -47,6 +49,17 @@ public class LotteryNumberServiceImpl implements LotteryNumberService {
         }
         LotteryNumber condition = new LotteryNumber();
         condition.setActivityId(activityId);
+        return this.select(condition, null, null);
+    }
+
+    @Override
+    public List<LotteryNumber> selectUnwingingByActivityId(Integer activityId) {
+        if (activityId == null || activityId == 0) {
+            return null;
+        }
+        LotteryNumber condition = new LotteryNumber();
+        condition.setActivityId(activityId);
+        condition.setStatus(StatusEnum.NOMAL.getValue());
         return this.select(condition, null, null);
     }
 }

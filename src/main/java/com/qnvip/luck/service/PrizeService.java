@@ -1,5 +1,6 @@
 package com.qnvip.luck.service;
 
+import com.qnvip.luck.bo.PrizeBO;
 import java.util.List;
 
 import com.qnvip.luck.entity.Prize;
@@ -16,5 +17,7 @@ public interface PrizeService {
     Prize selectOne(Prize condition, String targetColumns, String otherCondition);
 
     List<Prize> selectByActivityId(Integer activityid);
+
+    List<PrizeBO> selectPrizeBOByActivityId(Integer activityid);
 
 }

@@ -30,7 +30,7 @@
             <td>${e.createTime}</td>
             <td>
               <a class="btn btn-xs btn-info" href="/manage/activity/${e.id}">详情</a>
-              <a class="btn btn-xs btn-info" href="/manage/activity/luck/${e.id}">活动</a>
+              <a class="btn btn-xs btn-info" target="_blank" href="/luck/${e.id}">活动</a>
             </td>
             </tr>
           </#list>
