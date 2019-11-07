@@ -1,5 +1,6 @@
 package com.qnvip.luck.service.impl;
 
+import com.qnvip.commons.enums.StatusEnum;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -41,12 +42,14 @@ public class DefaultNumberServiceImpl implements DefaultNumberService {
     }
 
     @Override
-    public List<DefaultNumber> selectByActivityId(Integer activityId) {
+    public List<DefaultNumber> selectUnwingByActivityId(Integer activityId, Integer prizeId) {
         if (activityId == null || activityId == 0) {
             return null;
         }
         DefaultNumber condition = new DefaultNumber();
         condition.setActivityId(activityId);
+        condition.setPrizeId(prizeId);
+        condition.setStatus(StatusEnum.NOMAL.getValue());
         return this.select(condition, null, null);
     }
 }

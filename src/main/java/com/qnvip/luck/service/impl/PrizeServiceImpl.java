@@ -48,7 +48,17 @@ public class PrizeServiceImpl implements PrizeService {
         }
         Prize condition = new Prize();
         condition.setActivityId(activityid);
-        return this.select(condition, null, null);
+        return this.select(condition, null, "order by listorder desc");
+    }
+
+    @Override
+    public Prize selectById(Integer id) {
+        if (id == null || id == 0) {
+            return null;
+        }
+        Prize condition = new Prize();
+        condition.setId(id);
+        return this.selectOne(condition, null, null);
     }
 
     @Override

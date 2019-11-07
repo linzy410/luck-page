@@ -14,6 +14,7 @@
   <#--<script type="text/javascript" src="/js/luck.js"></script>-->
   <script>
     var lotteryNumbers;
+    var interval;
     function randomNum(minNum, maxNum) {
       switch (arguments.length) {
         case 1:
@@ -29,24 +30,49 @@
       }
     }
     $(function(){
-      // 号码滚动
+      // 切换奖品等级
+      $('.jianju-nav li').click(function(){
+        $('.jianju-nav li').removeClass('active');
+        $(this).addClass('active');
+        $('#hide_prizeId').val($(this).data('prize-id'));
+      });
+      // 开始抽奖
       $('#btn-start').click(function(){
+        var prizeId = $('#hide_prizeId').val();
+        if (prizeId == 0){
+          alert('抽奖已结束');
+          return;
+        }
         $.get('/luck/lettery/number/${activity.id}', function (data) {
           lotteryNumbers = data.data.split(',');
         })
-        setInterval(function() {
+        // 号码滚动
+        interval = setInterval(function() {
           var number = lotteryNumbers[randomNum(0, lotteryNumbers.length)];
           $('#show').text(number);
         }, 50);
+        $(this).hide();
+        $('#btn_stop').show();
       });
-      // 抽奖zz`
-      $('#btn-stop').click(function(){
-
+      // 抽奖
+      $('#btn_stop').click(function(){
+        var prizeId = $('#hide_prizeId').val();
+        $.get('/luck/go/${activity.id}', {prizeId: prizeId}, function(data){
+          clearInterval(interval);
+          $('#btn-start').show();
+          $('#btn_stop').hide();
+          if (data.code != 0) {
+            alert('抽奖已结束');
+          } else {
+            $('#show').text(data.data);
+          }
+        });
       });
     });
   </script>
 </head>
 <body class="bg">
+<input type="hidden" id="hide_prizeId" value="${defaultPrizeId!'0'}" />
 <div class="container-fluid">
   <div class=" title">
     <h4>${activity.title}</h4>
@@ -55,12 +81,12 @@
     <div class="col-md-12">
       <ul class="nav nav-pills">
         <#list prizes as p>
-        <li class="jianju" data-section="section_rd"><a href="#">${p.name}</a></li>
+        <li class="jianju <#if p_index == 0>active</#if>" data-prize-id="${p.id}"><a href="#">${p.name}</a></li>
         </#list>
       </ul>
     </div>
   </div>
-  <div class="section active" id="section_rd">
+  <div class="section active">
     <div style="padding-top: 45px;">
       <table class="table table-bordered table_rd">
         <tr>

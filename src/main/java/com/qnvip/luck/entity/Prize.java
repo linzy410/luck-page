@@ -29,6 +29,11 @@ public class Prize {
      */
     private Integer amount;
 
+    /**
+     * 余额
+     */
+    private Integer balance;
+
     private Integer listOrder;
 
 }

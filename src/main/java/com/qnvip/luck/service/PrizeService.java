@@ -18,6 +18,8 @@ public interface PrizeService {
 
     List<Prize> selectByActivityId(Integer activityid);
 
+    Prize selectById(Integer id);
+
     List<PrizeBO> selectPrizeBOByActivityId(Integer activityid);
 
 }

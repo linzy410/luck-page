@@ -15,6 +15,6 @@ public interface DefaultNumberService {
 
     DefaultNumber selectOne(DefaultNumber condition, String targetColumns, String otherCondition);
 
-    List<DefaultNumber> selectByActivityId(Integer activityId);
+    List<DefaultNumber> selectUnwingByActivityId(Integer activityId, Integer prizeId);
 
 }

@@ -75,6 +75,7 @@ public class ActivityServiceImpl implements ActivityService {
             Prize prize = activityBO.getPrizes().get(i);
             if (StringUtils.isNotEmpty(prize.getName())) {
                 prize.setActivityId(activity.getId());
+                prize.setBalance(prize.getAmount());
                 assembler.insert(prize);
                 DefaultNumber number = activityBO.getDefaultNumbers().get(i);
                 if (StringUtils.isNotEmpty(number.getNumber())) {

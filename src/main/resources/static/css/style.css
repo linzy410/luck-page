@@ -39,7 +39,6 @@
 .nav>li.jianju {
 	margin-right: 40px;
 }
-.nav>li.jianju:first-child{border: 1px solid #CEBE0C;}
 .nav>li.jianju:last-child{margin-right: 0;}
 
 .nav>li.active {
@@ -53,10 +52,6 @@
 }
 
 .nav>li.active>a {
-	color: #000;
-	background-color: #CEBE0C;
-}
-.nav>li.jianju:first-child>a {
 	color: #000;
 	background-color: #CEBE0C;
 }
