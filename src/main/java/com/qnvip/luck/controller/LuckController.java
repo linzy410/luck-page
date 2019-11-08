@@ -51,7 +51,7 @@ public class LuckController {
         List<Prize> prizes = prizeService.selectByActivityId(activityId);
         Prize condition = new Prize();
         condition.setActivityId(activityId);
-        Prize defautlPrize = prizeService.selectOne(condition, null, "balance > 0 order by listOrder desc");
+        Prize defautlPrize = prizeService.selectOne(condition, null, "order by listOrder desc");
         if (defautlPrize != null) {
             model.addAttribute("defaultPrizeId", defautlPrize.getId());
         }
@@ -77,9 +77,9 @@ public class LuckController {
     public JsonResult luck(@PathVariable(value = "id") Integer activityId, Integer prizeId) {
         List<DefaultNumber> list = defaultNumberService.selectUnwingByActivityId(activityId, prizeId);
         Prize prize = prizeService.selectById(prizeId);
-        if (prize.getBalance() <= 0) {
-            return JsonResult.error(ResultCode.BUSINESS_ERROR);
-        }
+//        if (prize.getBalance() <= 0) {
+//            return JsonResult.error(ResultCode.BUSINESS_ERROR);
+//        }
         String number = null;
         if (list != null && list.size() > 0) {
             DefaultNumber defaultNumber = list.get(0);

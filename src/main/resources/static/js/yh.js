@@ -386,9 +386,9 @@ var Fireworks = function(){
   
 	self.showRandom = function(){
 		var initialLaunchCount = 88;
-		while(initialLaunchCount--){
-		 	self.fireworks.push(new Firework(self.cw/2, self.ch, rand(50, self.cw-50), rand(50, self.ch/2)-50));
-		}
+    while(initialLaunchCount--){
+      self.fireworks.push(new Firework(self.cw/2, self.ch, rand(50, self.cw-50), rand(50, self.ch/2)-50));
+    }
 	}
 }
 

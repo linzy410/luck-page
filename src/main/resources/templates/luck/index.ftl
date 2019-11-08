@@ -8,10 +8,7 @@
   <link rel="stylesheet" href="/bootstrap-3.3.5/css/bootstrap.css">
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="/js/jquery-3.1.0.min.js"></script>
-  <script type="text/javascript" src="/js/countUp.js"></script>
-  <script type="text/javascript" src="/js/data.js"></script>
   <script type="text/javascript" src="/js/yh.js"></script>
-  <#--<script type="text/javascript" src="/js/luck.js"></script>-->
   <script>
     var lotteryNumbers;
     var interval;
@@ -30,19 +27,20 @@
       }
     }
     $(function(){
+      var fworks = new Fireworks();
       // 切换奖品等级
       $('.jianju-nav li').click(function(){
         $('.jianju-nav li').removeClass('active');
         $(this).addClass('active');
         $('#hide_prizeId').val($(this).data('prize-id'));
-      });
+      })
       // 开始抽奖
       $('#btn-start').click(function(){
         var prizeId = $('#hide_prizeId').val();
-        if (prizeId == 0){
-          alert('抽奖已结束');
-          return;
-        }
+        // if (prizeId == 0){
+        //   alert('抽奖已结束');
+        //   return;
+        // }
         $.get('/luck/lettery/number/${activity.id}', function (data) {
           lotteryNumbers = data.data.split(',');
         })
@@ -65,8 +63,12 @@
             alert('抽奖已结束');
           } else {
             $('#show').text(data.data);
+            $('#canvas-container').show();
+            fworks.showRandom();
+            setTimeout(function(){$('#canvas-container').hide()}, 2000);
           }
         });
+
       });
     });
   </script>
