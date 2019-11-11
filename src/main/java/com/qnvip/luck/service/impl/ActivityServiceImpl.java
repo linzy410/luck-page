@@ -68,6 +68,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Transactional
     public void save(ActivityBO activityBO) {
         Activity activity = activityBO.getActivity();
+        activity.setNumberPrefix(activityBO.getNumberPrefix());
         activity.setCreateTime(DateUtil.getCurrentDateTime());
         assembler.insert(activity);
 

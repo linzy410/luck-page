@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="/js/jquery-3.1.0.min.js"></script>
   <script type="text/javascript" src="/js/yh.js"></script>
+  <script type="text/javascript" src="/js/countUp.js"></script>
   <script>
     var lotteryNumbers;
     var interval;
@@ -28,6 +29,14 @@
     }
     $(function(){
       var fworks = new Fireworks();
+      var options = {
+        useEasing : true,
+        useGrouping : true,
+        separator : '',
+        decimal : '',
+        prefix : '',
+        suffix : ''
+      };
       // 切换奖品等级
       $('.jianju-nav li').click(function(){
         $('.jianju-nav li').removeClass('active');
@@ -46,8 +55,13 @@
         })
         // 号码滚动
         interval = setInterval(function() {
-          var number = lotteryNumbers[randomNum(0, lotteryNumbers.length)];
-          $('#show').text(number);
+          for ( var i = 0; i <lotteryNumbers.length; i++){
+            if (number.indexOf('win')>=0) {
+              number = number.substring(3);
+              clearInterval(interval);
+            }
+            $('#show').text(number);
+          }
         }, 50);
         $(this).hide();
         $('#btn_stop').show();
@@ -56,16 +70,15 @@
       $('#btn_stop').click(function(){
         var prizeId = $('#hide_prizeId').val();
         $.get('/luck/go/${activity.id}', {prizeId: prizeId}, function(data){
-          clearInterval(interval);
           $('#btn-start').show();
           $('#btn_stop').hide();
           if (data.code != 0) {
             alert('抽奖已结束');
           } else {
-            $('#show').text(data.data);
-            $('#canvas-container').show();
-            fworks.showRandom();
-            setTimeout(function(){$('#canvas-container').hide()}, 2000);
+            lotteryNumbers.push('win'+data.data);
+            //$('#canvas-container').show();
+            //fworks.showRandom();
+            //setTimeout(function(){$('#canvas-container').hide()}, 2000);
           }
         });
 
@@ -92,7 +105,7 @@
     <div style="padding-top: 45px;">
       <table class="table table-bordered table_rd">
         <tr>
-          <td id="show">8888888</td>
+          <td id="show">${defaultNumber}</td>
         </tr>
       </table>
     </div>

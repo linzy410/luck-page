@@ -22,6 +22,8 @@ public class Activity {
      */
     private String title;
 
+    private String numberPrefix;
+
     /**
      * 
      */

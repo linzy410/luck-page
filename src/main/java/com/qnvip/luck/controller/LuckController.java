@@ -55,9 +55,13 @@ public class LuckController {
         if (defautlPrize != null) {
             model.addAttribute("defaultPrizeId", defautlPrize.getId());
         }
-
+        LotteryNumber numberConditNumber = new LotteryNumber();
+        numberConditNumber.setActivityId(activityId);
+        LotteryNumber lotteryNumber = lotteryNumberService.selectOne(numberConditNumber, null, null);
+        String defaultNumber = StringUtil.stringFill(activity.getNumberPrefix(), lotteryNumber.getNumber().length(), '8', false);
         model.addAttribute("activity", activity);
         model.addAttribute("prizes", prizes);
+        model.addAttribute("defaultNumber", defaultNumber);
 
         return "luck/index";
     }
@@ -67,7 +71,12 @@ public class LuckController {
     public JsonResult getLotteryNumbers(@PathVariable(value = "id") Integer activityId)
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         List<LotteryNumber> lotteryNumbers = lotteryNumberService.selectUnwingingByActivityId(activityId);
-        String numbers = StringUtil.getColumnValue(lotteryNumbers, "number");
+        String numbers;
+        if (lotteryNumbers.size() > 60) {
+            numbers = StringUtil.getColumnValue(lotteryNumbers.subList(0, 60), "number");
+        } else {
+            numbers = StringUtil.getColumnValue(lotteryNumbers, "number");
+        }
         return JsonResult.success(numbers);
     }
 
