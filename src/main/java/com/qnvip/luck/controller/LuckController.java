@@ -16,6 +16,7 @@ import com.qnvip.luck.service.DefaultNumberService;
 import com.qnvip.luck.service.LotteryNumberService;
 import com.qnvip.luck.service.PrizeService;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
@@ -71,12 +72,11 @@ public class LuckController {
     public JsonResult getLotteryNumbers(@PathVariable(value = "id") Integer activityId)
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         List<LotteryNumber> lotteryNumbers = lotteryNumberService.selectUnwingingByActivityId(activityId);
-        String numbers;
-        if (lotteryNumbers.size() > 60) {
-            numbers = StringUtil.getColumnValue(lotteryNumbers.subList(0, 60), "number");
-        } else {
-            numbers = StringUtil.getColumnValue(lotteryNumbers, "number");
+        List<LotteryNumber> numberList = new ArrayList<>(100);
+        for (int i = 0; i < 60; i++) {
+            numberList.add(lotteryNumbers.get(new Random().nextInt(lotteryNumbers.size())));
         }
+        String numbers = StringUtil.getColumnValue(numberList, "number");
         return JsonResult.success(numbers);
     }
 

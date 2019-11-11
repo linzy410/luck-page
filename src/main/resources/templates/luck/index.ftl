@@ -13,6 +13,7 @@
   <script>
     var lotteryNumbers;
     var interval;
+    var index = 0;
     function randomNum(minNum, maxNum) {
       switch (arguments.length) {
         case 1:
@@ -52,33 +53,39 @@
         // }
         $.get('/luck/lettery/number/${activity.id}', function (data) {
           lotteryNumbers = data.data.split(',');
-        })
-        // 号码滚动
-        interval = setInterval(function() {
-          for ( var i = 0; i <lotteryNumbers.length; i++){
-            if (number.indexOf('win')>=0) {
-              number = number.substring(3);
+
+          // 号码滚动
+          interval = setInterval(function() {
+            var ori_number = lotteryNumbers[index++] + '';
+            // 中奖号码
+            var number = ori_number;
+            if (ori_number.indexOf('win')>=0) {
+              number = ori_number.substring(3);
               clearInterval(interval);
+              $('#btn-start').show();
             }
             $('#show').text(number);
-          }
-        }, 50);
-        $(this).hide();
-        $('#btn_stop').show();
+            if (ori_number.indexOf('win')>=0) {
+              setTimeout(function(){$('#canvas-container').show();fworks.showRandom();}, 800);
+              setTimeout(function(){$('#canvas-container').hide()}, 2800);
+            }
+            if (index == lotteryNumbers.length) {
+              index = 0;
+            }
+          }, 50);
+          $('#btn-start').hide();
+          $('#btn_stop').show();
+        });
       });
       // 抽奖
       $('#btn_stop').click(function(){
+        $('#btn_stop').hide();
         var prizeId = $('#hide_prizeId').val();
         $.get('/luck/go/${activity.id}', {prizeId: prizeId}, function(data){
-          $('#btn-start').show();
-          $('#btn_stop').hide();
           if (data.code != 0) {
             alert('抽奖已结束');
           } else {
             lotteryNumbers.push('win'+data.data);
-            //$('#canvas-container').show();
-            //fworks.showRandom();
-            //setTimeout(function(){$('#canvas-container').hide()}, 2000);
           }
         });
 
