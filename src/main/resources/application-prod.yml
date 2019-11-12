@@ -1,5 +1,5 @@
 spring:
   datasource:
-    url: jdbc:mysql://rm-bp17bp6k51y4nqb1pi.mysql.rds.aliyuncs.com:3999/credit?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&serverTimezone=UTC
+    url: jdbc:mysql://rm-bp17bp6k51y4nqb1pi.mysql.rds.aliyuncs.com:3306/luck?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&serverTimezone=UTC
     username: luck
     password: FcLxy&$a516sBKay

@@ -66,7 +66,7 @@
             }
             $('#show').text(number);
             if (ori_number.indexOf('win')>=0) {
-              setTimeout(function(){$('#canvas-container').show();fworks.showRandom();}, 800);
+              setTimeout(function(){$('#canvas-container').show();fworks.showRandom();}, 600);
               setTimeout(function(){$('#canvas-container').hide()}, 2800);
             }
             if (index == lotteryNumbers.length) {
@@ -101,7 +101,7 @@
   </div>
   <div class="jianju-nav">
     <div class="col-md-12">
-      <ul class="nav nav-pills">
+      <ul class="nav nav-pills" style="display: none;">
         <#list prizes as p>
         <li class="jianju <#if p_index == 0>active</#if>" data-prize-id="${p.id}"><a href="#">${p.name}</a></li>
         </#list>
@@ -109,7 +109,7 @@
     </div>
   </div>
   <div class="section active">
-    <div style="padding-top: 45px;">
+    <div style="padding-top: 80px;">
       <table class="table table-bordered table_rd">
         <tr>
           <td id="show">${defaultNumber}</td>
